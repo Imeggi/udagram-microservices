@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
 
 const API_HOST = environment.apiHost;
+const API_HOST_USER = environment.apiHostUser;
 
 @Injectable({
   providedIn: 'root'
