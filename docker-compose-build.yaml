@@ -1,18 +1,18 @@
 version: "3"
 services:
- reverseproxy:
- build:
- context: .
- image: imeggi/reverseproxy 
- backend_user:
- build:
- context: udacity-c3-restapi-user
- image: imeggi/udacity-restapi-user
- backend_feed:
- build:
- context: udacity-c3-restapi-feed 
- image: imeggi/udacity-restapi-feed
- frontend:
- build:
- context: udacity-c3-frontend 
- image: imegi/udacity-frontend:local
+  reverseproxy:
+    build:
+      context: udagram-reverse-proxy
+    image: imeggi/udagram-reverse-proxy 
+  backend_user:
+    build:
+      context: udagram-restapi-user
+    image: imeggi/udagram-restapi-user
+  backend_feed:
+    build:
+      context: udagram-restapi-feed 
+    image: imeggi/udagram-restapi-feed
+  frontend:
+    build:
+      context: udagram-frontend 
+    image: imeggi/udagram-frontend:latest
