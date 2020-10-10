@@ -11,7 +11,7 @@ before_script:
 
 script:
   - docker --version # print the version for logging
-  - docker-compose -f docker-compose-build.yaml build --parallel
+  - docker-compose -f docker-compose-build.yaml build --parallel # build the new docker imgages
 
   
 

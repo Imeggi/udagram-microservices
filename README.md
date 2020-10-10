@@ -72,3 +72,7 @@ Create an AWS S3 bucket. Set the config values for environment variables prefixe
     npm audit fix
     ```
 5. In `set_env.sh`, environment variables are set with `export $VAR=value`. Setting it this way is not permanent; every time you open a new terminal, you will have to run `set_env.sh` to reconfigure your environment variables. To verify if your environment variable is set, you can check the variable with a command like `echo $POSTGRES_USERNAME`.
+
+6. Continuous Integration - docker images are automatically built and pushed to dockerhub using the travis-ci tool. Environment variables for dockerhub user name and password are added as environment variables in the travis-ci tool. 
+
+7. To deploy is done to a kubernetes cluster in AWS. Make sure it is created and that you have created a proper kubeconfig file. Deployment and service files are created for each service. To access the needed environment variables and secrets configmaps and secrets files are created respectively. You find them in the `deploy` folder. You must use the comand `kubectl apply -f <deployment file>`and `kubectl apply -f  <service file>`for every service to get it running. To make it accessible you also have to do a port-forward to port 8080 for the reverseproxy and frontend services to make it accessible via `http://localhost:8100`. When you have made an update to a service and pushed it to github. You deploy the changes by using the updated image. Example: `kubectl set image deployment/backend-feed  backend-feed=imeggi/udagram-restapi-feed:latest --record`.
